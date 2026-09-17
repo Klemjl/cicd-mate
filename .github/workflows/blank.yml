@@ -1,0 +1,25 @@
+name: Klemjl
+run-name: Workflow triggered by ${{ github.actor }}
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  GITHUB_ACTIONS: "true"
+
+jobs:
+  github-task-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: usage of variable
+        run: echo "${{ env.GITHUB_ACTIONS }}"
+
+      - name: presentation of branch and repo names
+        run: echo "Branch name is ${{ github.head_ref }}, repo name is ${{ github.repository }}"
+
+      - name: event
+        run: echo "Trigger event is ${{ github.event_name }}"nd deploy your project.
